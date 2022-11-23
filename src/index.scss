@@ -1,0 +1,9 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "./style/base";
+
+body {
+  margin: 0;
+  font-family: "FiraSans-Regular", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
