@@ -10,6 +10,7 @@ import { styled } from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
 import Toolbar from "@mui/material/Toolbar";
+import Avatar from "@mui/material/Avatar";
 
 import { toggleMode } from "../../store/darkmode/slice";
 import { toggleLocale } from "../../store/Locale/slice";
@@ -34,6 +35,13 @@ const Layout = () => {
     <>
       <AppBar position="absolute">
         <Toolbar>
+          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
+            <img
+              src="https://emojipedia-us.s3.amazonaws.com/source/noto-emoji-animations/344/flexed-biceps_light-skin-tone_1f4aa-1f3fb_1f3fb.gif"
+              alt="logo"
+              width={"40px"}
+            />
+          </Avatar>
           <Typography
             component="h1"
             variant="h5"
