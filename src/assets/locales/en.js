@@ -1,4 +1,7 @@
 export const en = {
+  navbar: {
+    title: "My Gym Partner",
+  },
   auth: {
     signIn: "Sign In",
     signUp: "Sign Up",

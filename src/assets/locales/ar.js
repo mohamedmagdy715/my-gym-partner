@@ -1,4 +1,7 @@
 export const ar = {
+  navbar: {
+    title: "ماي چيم بارتنر",
+  },
   auth: {
     signIn: "تسجيل الدخول",
     signUp: "الاشتراك",

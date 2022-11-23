@@ -1,7 +1,7 @@
 import { useLayoutEffect } from "react";
 import { useSelector } from "react-redux";
 import { createTheme } from "@mui/material/styles";
-import { Container, CssBaseline, ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import { prefixer } from "stylis";
@@ -38,11 +38,9 @@ const App = () => {
     <CacheProvider value={isRtl ? cacheRtl : cacheLtr}>
       <ThemeProvider theme={createTheme(getDesignTokens(mode, isRtl))}>
         <CssBaseline />
-        <Container>
-          <AppRoutes />
-          {isLoading && <Loader />}
-          <Snackbar />
-        </Container>
+        <AppRoutes />
+        {isLoading && <Loader />}
+        <Snackbar />
       </ThemeProvider>
     </CacheProvider>
   );

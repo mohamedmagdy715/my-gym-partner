@@ -1,43 +1,91 @@
 import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Container } from "@mui/system";
+import { Box } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import LanguageIcon from "@mui/icons-material/Language";
+import LogoutOutlined from "@mui/icons-material/LogoutOutlined";
+import { styled } from "@mui/material/styles";
+import MuiAppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
+import Toolbar from "@mui/material/Toolbar";
 
-import { toggleLocale } from "../../store/Locale/slice";
 import { toggleMode } from "../../store/darkmode/slice";
+import { toggleLocale } from "../../store/Locale/slice";
+import messages from "../../assets/locales";
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(["width", "margin"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+}));
 
 const Layout = () => {
   const dispatch = useDispatch();
+  const { locale } = useSelector((state) => state.locale);
   const { mode } = useSelector((state) => state.darkmode);
 
   return (
     <>
-      <div className="d-flex justify-content-end mt-3 me-4">
-        <LanguageIcon
-          className="pointer mx-3"
-          onClick={() => {
-            dispatch(toggleLocale());
-          }}
-        />
-        {mode === "light" ? (
-          <DarkModeIcon
-            className="pointer"
-            onClick={() => {
-              dispatch(toggleMode());
-            }}
-          />
-        ) : (
-          <LightModeIcon
-            className="pointer"
-            onClick={() => {
-              dispatch(toggleMode());
-            }}
-          />
-        )}
-      </div>
-      <h1>Layout</h1>
-      <Outlet />
+      <AppBar position="absolute">
+        <Toolbar>
+          <Typography
+            component="h1"
+            variant="h5"
+            color="inherit"
+            noWrap
+            sx={{ flexGrow: 1 }}
+          >
+            {messages[locale]["navbar"]["title"]}
+          </Typography>
+
+          <Box sx={{ display: "flex" }}>
+            <Typography md sx={{ mr: 1, display: { xs: "none", sm: "block" } }}>
+              Mohamed Magdy
+            </Typography>
+            <LogoutOutlined
+              className="pointer"
+              onClick={() => {
+                console.log("log out");
+              }}
+            />
+            <LanguageIcon
+              className="pointer"
+              onClick={() => {
+                dispatch(toggleLocale());
+              }}
+              sx={{ mx: 1 }}
+            />
+            {mode === "light" ? (
+              <DarkModeIcon
+                className="pointer"
+                onClick={() => {
+                  dispatch(toggleMode());
+                }}
+              />
+            ) : (
+              <LightModeIcon
+                className="pointer"
+                onClick={() => {
+                  dispatch(toggleMode());
+                }}
+              />
+            )}
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <Container
+        sx={{
+          mt: 10,
+        }}
+      >
+        <Outlet />
+      </Container>
     </>
   );
 };

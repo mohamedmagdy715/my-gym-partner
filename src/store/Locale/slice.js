@@ -3,11 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 export const localeSlice = createSlice({
   name: "locale",
   initialState: {
-    locale: "en",
-    isRtl: false,
+    locale: localStorage.getItem("locale") || "en",
+    isRtl:
+      !!localStorage.getItem("locale") &&
+      localStorage.getItem("locale") !== "en",
   },
   reducers: {
     toggleLocale: (state) => {
+      localStorage.setItem("locale", state.locale === "en" ? "ar" : "en");
       state.locale = state.locale === "en" ? "ar" : "en";
       state.isRtl = !state.isRtl;
     },

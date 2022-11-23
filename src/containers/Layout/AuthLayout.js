@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Box } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -13,9 +14,9 @@ const AuthLayout = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-end mt-3 me-4">
+      <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3, mr: 4 }}>
         <LanguageIcon
-          className="pointer mx-3"
+          sx={{ mx: 1 }}
           onClick={() => {
             dispatch(toggleLocale());
           }}
@@ -35,7 +36,7 @@ const AuthLayout = () => {
             }}
           />
         )}
-      </div>
+      </Box>
       <Outlet />
     </>
   );
