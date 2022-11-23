@@ -53,7 +53,7 @@ const Layout = () => {
           </Typography>
 
           <Box sx={{ display: "flex" }}>
-            <Typography md sx={{ mr: 1, display: { xs: "none", sm: "block" } }}>
+            <Typography sx={{ mr: 1, display: { xs: "none", sm: "block" } }}>
               Mohamed Magdy
             </Typography>
             <LogoutOutlined

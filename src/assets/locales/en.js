@@ -1,6 +1,8 @@
 export const en = {
-  navbar: {
-    title: "My Gym Partner",
+  general: {
+    view: "view",
+    edit: "edit",
+    delete: "delete",
   },
   auth: {
     signIn: "Sign In",
@@ -21,5 +23,14 @@ export const en = {
         "Password must be at least 8 characters, with at least one uppercase letter, one digit, one special character (!@#$%^&?*)",
       req: "Required",
     },
+  },
+  navbar: {
+    title: "My Gym Partner",
+  },
+  home: {
+    header: "My Gym Partner",
+    intro:
+      "It is like your gym assistant that saves all your exercises with all the wieghts you trained with, and helps you lift.",
+    addExercise: "+Add Exercise",
   },
 };

@@ -11,9 +11,11 @@ export default function Button({
   fullWidth,
   color,
   sx,
+  ...rest
 }) {
   return (
     <MaterialButton
+      {...rest}
       sx={sx}
       className={`${className}`}
       fullWidth={fullWidth}
