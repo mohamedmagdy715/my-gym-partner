@@ -1,8 +1,8 @@
-# You can use initial commit on master branch as a react boilerplate
+# You can use initial commit2 on master branch as a react boilerplate
 
-## developed using
+## Developed using:
 
-### React Router v6
+### React router v6
 
 ### Redux toolkit
 
@@ -10,7 +10,7 @@
 
 ### English and arabic localization
 
-### Dark Mode option
+### Dark mode option
 
 ### Sign in and sign up pages examples
 

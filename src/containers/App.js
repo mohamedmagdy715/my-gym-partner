@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createTheme } from "@mui/material/styles";
-import { Container, ThemeProvider } from "@mui/material";
+import { Container, CssBaseline, ThemeProvider } from "@mui/material";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import { prefixer } from "stylis";
@@ -42,6 +42,7 @@ const App = () => {
   return (
     <CacheProvider value={isRtl ? cacheRtl : cacheLtr}>
       <ThemeProvider theme={createTheme(getDesignTokens(mode, isRtl))}>
+        <CssBaseline />
         <Container>
           <div className="d-flex justify-content-end mt-3 me-4">
             <LanguageIcon
