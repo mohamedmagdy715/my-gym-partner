@@ -1,30 +1,29 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-// import PrivateRoute from "./PrivateRoute";
-// import PublicRoute from "./PublicRoute";
 import Auth from "../utils/Auth";
 import { ROUTES_PATHS } from "../utils/RoutesPaths";
 import SignIn from "../containers/Auth/SignIn";
 import SignUp from "../containers/Auth/SignUp";
 import Home from "../containers/Home";
 import Layout from "../containers/Layout";
+import AuthLayout from "../containers/Layout/AuthLayout";
 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route
-          path={ROUTES_PATHS.signIn}
           element={
-            !Auth.isAuth() ? <SignIn /> : <Navigate to={ROUTES_PATHS.home} />
+            !Auth.isAuth() ? (
+              <AuthLayout />
+            ) : (
+              <Navigate to={ROUTES_PATHS.home} />
+            )
           }
-        />
-        <Route
-          path={ROUTES_PATHS.signUp}
-          element={
-            !Auth.isAuth() ? <SignUp /> : <Navigate to={ROUTES_PATHS.home} />
-          }
-        />
+        >
+          <Route path={ROUTES_PATHS.signIn} element={<SignIn />} />
+          <Route path={ROUTES_PATHS.signUp} element={<SignUp />} />
+        </Route>
         <Route
           element={
             Auth.isAuth() ? <Layout /> : <Navigate to={ROUTES_PATHS.signIn} />

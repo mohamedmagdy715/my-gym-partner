@@ -6,6 +6,7 @@ import loaderReducer from "./Loader/slice";
 import snackbarReducer from "./Snackbar/slice";
 import authReducer from "./Auth/slice";
 import localeReducer from "./Locale/slice";
+import darkmodeReducer from "./darkmode/slice";
 
 const saga = createSagaMiddleware();
 
@@ -15,6 +16,7 @@ const store = configureStore({
     snackbar: snackbarReducer,
     auth: authReducer,
     locale: localeReducer,
+    darkmode: darkmodeReducer,
   },
   middleware: [saga],
 });

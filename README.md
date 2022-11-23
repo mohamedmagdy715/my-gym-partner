@@ -1,4 +1,4 @@
-# You can use initial commit2 on master branch as a react boilerplate
+# You can use initial commit3 on master branch as a react boilerplate
 
 ## Developed using:
 

@@ -7,7 +7,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import { toggleLocale } from "../../store/Locale/slice";
 import { toggleMode } from "../../store/darkmode/slice";
 
-const Layout = () => {
+const AuthLayout = () => {
   const dispatch = useDispatch();
   const { mode } = useSelector((state) => state.darkmode);
 
@@ -36,10 +36,9 @@ const Layout = () => {
           />
         )}
       </div>
-      <h1>Layout</h1>
       <Outlet />
     </>
   );
 };
 
-export default Layout;
+export default AuthLayout;
