@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "@mui/system";
 import { Box } from "@mui/material";
@@ -16,6 +16,7 @@ import { toggleMode } from "../../store/darkmode/slice";
 import { toggleLocale } from "../../store/Locale/slice";
 import messages from "../../assets/locales";
 import { ROUTES_PATHS } from "../../utils/RoutesPaths";
+import { signOutRequest } from "../../store/Auth/slice";
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -31,6 +32,13 @@ const Layout = () => {
   const dispatch = useDispatch();
   const { locale } = useSelector((state) => state.locale);
   const { mode } = useSelector((state) => state.darkmode);
+  const { user } = useSelector((state) => state.auth.user);
+
+  const navigate = useNavigate();
+
+  const handleSignOutClicked = () => {
+    dispatch(signOutRequest({ navigate }));
+  };
 
   return (
     <>
@@ -57,13 +65,12 @@ const Layout = () => {
 
           <Box sx={{ display: "flex" }}>
             <Typography sx={{ mr: 1, display: { xs: "none", sm: "block" } }}>
-              Mohamed Magdy
+              {!!user.firstName && user.firstName}{" "}
+              {!!user.lastName && user.lastName}
             </Typography>
             <LogoutOutlined
               className="pointer"
-              onClick={() => {
-                console.log("log out");
-              }}
+              onClick={handleSignOutClicked}
             />
             <LanguageIcon
               className="pointer"

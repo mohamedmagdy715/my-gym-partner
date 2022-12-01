@@ -15,14 +15,12 @@ export const requestHandler = (request) => {
   numberOfAjaxCAllPending++;
   if (isHandlerEnabled(request)) {
     store.dispatch(showHideLoader(true));
-    const user = JSON.parse(sessionStorage.getItem("depayUser"));
+    const user =
+      JSON.parse(localStorage.getItem("user")) ||
+      JSON.parse(sessionStorage.getItem("user"));
     const token = user?.token;
     if (token) {
       request.headers["Authorization"] = `Bearer ${token}`;
-    }
-    const operationMode = sessionStorage.getItem("operationMode");
-    if (operationMode) {
-      request.headers["Partner-Mode"] = operationMode;
     }
   }
   return request;

@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import Auth from "../utils/Auth";
 import { ROUTES_PATHS } from "../utils/RoutesPaths";
 import SignIn from "../containers/Auth/SignIn";
 import SignUp from "../containers/Auth/SignUp";
@@ -10,18 +9,17 @@ import Muscle from "../containers/Muscle";
 import Layout from "../containers/Layout";
 import AuthLayout from "../containers/Layout/AuthLayout";
 import Error from "../containers/Error";
+import { useSelector } from "react-redux";
 
 const AppRoutes = () => {
+  const { token: isAuth } = useSelector((state) => state.auth.user);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           element={
-            !Auth.isAuth() ? (
-              <AuthLayout />
-            ) : (
-              <Navigate to={ROUTES_PATHS.home} />
-            )
+            !isAuth ? <AuthLayout /> : <Navigate to={ROUTES_PATHS.home} />
           }
         >
           <Route path={ROUTES_PATHS.signIn} element={<SignIn />} />
@@ -29,7 +27,7 @@ const AppRoutes = () => {
         </Route>
         <Route
           element={
-            Auth.isAuth() ? <Layout /> : <Navigate to={ROUTES_PATHS.signIn} />
+            !!isAuth ? <Layout /> : <Navigate to={ROUTES_PATHS.signIn} />
           }
         >
           <Route path={ROUTES_PATHS.home} element={<Home />} />

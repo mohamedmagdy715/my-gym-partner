@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Avatar from "@mui/material/Avatar";
@@ -13,9 +13,13 @@ import Checkbox from "../../../components/Checkbox";
 import Button from "../../../components/Button";
 import { ROUTES_PATHS } from "../../../utils/RoutesPaths";
 import messages from "../../../assets/locales";
+import { signInRequest } from "../../../store/Auth/slice";
 
 export default function SignIn() {
+  const dispatch = useDispatch();
   const { locale } = useSelector((state) => state.locale);
+
+  const navigate = useNavigate();
 
   const {
     values,
@@ -42,11 +46,12 @@ export default function SignIn() {
       ),
     }),
     onSubmit: ({ email, password, rememberMe }) => {
-      console.log({
-        email,
-        password,
-        rememberMe,
-      });
+      dispatch(
+        signInRequest({
+          data: { email, password, rememberMe },
+          navigate,
+        })
+      );
     },
   });
 
