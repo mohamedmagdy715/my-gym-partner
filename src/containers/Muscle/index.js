@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
@@ -8,20 +8,22 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Pagination from "@mui/material/Pagination";
 import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 
 import messages from "../../assets/locales";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
-import AddExerciseDialog from "./AddExerciseDialog";
-import { ROUTES_PATHS } from "../../utils/RoutesPaths";
+import AddAngleDialog from "./AddAngleDialog";
 
-const Home = () => {
+const Muscle = () => {
   const [page, setPage] = useState(1);
   const [open, setOpen] = useState(false);
+  const [openView, setOpenView] = useState(false);
   const { locale } = useSelector((state) => state.locale);
   const cards = [1, 2];
 
-  const navigate = useNavigate();
+  const { muscleId } = useParams();
 
   useEffect(() => {}, [page]);
 
@@ -36,21 +38,12 @@ const Home = () => {
       >
         <Container maxWidth="sm">
           <Typography
-            component="h1"
-            variant="h2"
-            align="center"
-            color="text.primary"
-            gutterBottom
-          >
-            {messages[locale]["home"]["header"]}
-          </Typography>
-          <Typography
-            variant="h5"
+            variant="h3"
             align="center"
             color="text.secondary"
             paragraph
           >
-            {messages[locale]["home"]["intro"]}
+            muscle{muscleId}
           </Typography>
           <Stack
             sx={{ pt: 4 }}
@@ -64,7 +57,7 @@ const Home = () => {
               onClick={() => {
                 setOpen(true);
               }}
-              label={`+${messages[locale]["home"]["addExercise"]}`}
+              label={`+${messages[locale]["muscle"]["addAngle"]}`}
             />
           </Stack>
         </Container>
@@ -75,18 +68,22 @@ const Home = () => {
             <Grid item key={card} xs={12} sm={6} md={4}>
               <Card
                 img={`https://picsum.photos/200/300?random=${card}`}
-                imgAlt={"exercise"}
-                heading={`Exercise${card}`}
+                imgAlt={"angle"}
+                heading={`Angle${card}`}
                 desc={
                   <>
                     <Typography variant="body1">description</Typography>
                     <Typography variant="body2">
-                      {messages[locale]["home"]["lastPlayed"]}10/10/2022
+                      {messages[locale]["muscle"]["lastPlayed"]}: 10/10/2022
+                    </Typography>
+                    <Typography variant="body2">
+                      {messages[locale]["muscle"]["lastTimeWeights"]}: 12*15,
+                      14*15, 16*15, 18*12
                     </Typography>
                   </>
                 }
                 onViewClick={() => {
-                  navigate(ROUTES_PATHS.exercise.replace(":exerciseId", card));
+                  setOpenView(true);
                 }}
                 onEditClick={() => {
                   setOpen(true);
@@ -115,10 +112,57 @@ const Home = () => {
           reason !== "backdropClick" && setOpen(false);
         }}
       >
-        <AddExerciseDialog setOpen={setOpen} />
+        <AddAngleDialog setOpen={setOpen} />
+      </Dialog>
+      <Dialog
+        open={openView}
+        onClose={(e, reason) => {
+          setOpenView(false);
+        }}
+      >
+        <DialogTitle>angle1</DialogTitle>
+        <DialogContent>
+          <Container>
+            <Grid container>
+              <Grid item xs={3}>
+                {messages[locale]["form"]["description"]}:
+              </Grid>
+              <Grid item xs={9}>
+                descccc
+              </Grid>
+              <Grid item xs={3}>
+                {messages[locale]["muscle"]["lastPlayed"]}:
+              </Grid>
+              <Grid item xs={9}>
+                10/10/2022
+              </Grid>
+              <Grid item xs={12}>
+                {messages[locale]["muscle"]["weights"]}:
+              </Grid>
+              <Grid item xs={3}>
+                10/11/2022
+              </Grid>
+              <Grid item xs={9}>
+                12*15, 14*15, 16*15, 18*12
+              </Grid>
+              <Grid item xs={3}>
+                15/11/2022
+              </Grid>
+              <Grid item xs={9}>
+                12*15, 14*15, 16*15, 18*12
+              </Grid>
+              <Grid item xs={3}>
+                20/11/2022
+              </Grid>
+              <Grid item xs={9}>
+                12*15, 14*15, 16*15, 18*12
+              </Grid>
+            </Grid>
+          </Container>
+        </DialogContent>
       </Dialog>
     </main>
   );
 };
 
-export default Home;
+export default Muscle;

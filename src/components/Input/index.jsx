@@ -28,6 +28,7 @@ export default function Input({
   inputClass,
   sxWrapper,
   onBlur,
+  ...props
 }) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -41,6 +42,7 @@ export default function Input({
         {label}
       </InputLabel>
       <OutlinedInput
+        {...props}
         required={required}
         fullWidth={fullWidth}
         id={id}

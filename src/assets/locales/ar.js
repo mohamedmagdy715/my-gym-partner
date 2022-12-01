@@ -3,6 +3,9 @@ export const ar = {
     view: "عرض",
     edit: "تعديل",
     delete: "حذف",
+    submit: "تمام",
+    cancel: "إلغاء",
+    notFound: "غير متاح",
   },
   auth: {
     signIn: "تسجيل الدخول",
@@ -31,6 +34,23 @@ export const ar = {
     header: "ماي چيم بارتنر",
     intro:
       "مساعدك في الچيم الذي يحفظ كل تمريناتك بكل الأوزان التي تمرنت بها، ويساعدك لتحمل أكثر.",
-    addExercise: "+أضف تمرينة",
+    addExercise: "أضف تمرينة",
+    lastPlayed: "اتلعب آخر مرة",
+  },
+  form: {
+    name: "اسم",
+    description: "وصف",
+    image: "الصورة",
+  },
+  exercise: {
+    addMuscle: "أضف عضلة",
+    lastPlayed: "اتلعب آخر مرة",
+  },
+  muscle: {
+    addAngle: "أضف زاوية",
+    lastPlayed: "اتلعب آخر مرة",
+    lastTimeWeights: "أوزان آخر مرة",
+    todayWeights: "أوزان النهاردة",
+    weights: "الأوزان",
   },
 };

@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "@mui/system";
 import { Box } from "@mui/material";
@@ -15,6 +15,7 @@ import Avatar from "@mui/material/Avatar";
 import { toggleMode } from "../../store/darkmode/slice";
 import { toggleLocale } from "../../store/Locale/slice";
 import messages from "../../assets/locales";
+import { ROUTES_PATHS } from "../../utils/RoutesPaths";
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -35,13 +36,15 @@ const Layout = () => {
     <>
       <AppBar position="absolute">
         <Toolbar>
-          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
-            <img
-              src="https://emojipedia-us.s3.amazonaws.com/source/noto-emoji-animations/344/flexed-biceps_light-skin-tone_1f4aa-1f3fb_1f3fb.gif"
-              alt="logo"
-              width={"40px"}
-            />
-          </Avatar>
+          <Link to={ROUTES_PATHS.home}>
+            <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
+              <img
+                src="https://emojipedia-us.s3.amazonaws.com/source/noto-emoji-animations/344/flexed-biceps_light-skin-tone_1f4aa-1f3fb_1f3fb.gif"
+                alt="logo"
+                width={"40px"}
+              />
+            </Avatar>
+          </Link>
           <Typography
             component="h1"
             variant="h5"

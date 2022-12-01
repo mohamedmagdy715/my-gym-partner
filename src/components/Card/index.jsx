@@ -40,7 +40,7 @@ export default function Card({
         <Typography gutterBottom variant="h5" component="h2">
           {heading}
         </Typography>
-        <Typography>{desc}</Typography>
+        {desc}
       </CardContent>
       <CardActions>
         <Button

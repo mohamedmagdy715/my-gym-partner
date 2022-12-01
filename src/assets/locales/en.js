@@ -3,6 +3,9 @@ export const en = {
     view: "view",
     edit: "edit",
     delete: "delete",
+    submit: "submit",
+    cancel: "cancel",
+    notFound: "Not Found",
   },
   auth: {
     signIn: "Sign In",
@@ -31,6 +34,23 @@ export const en = {
     header: "My Gym Partner",
     intro:
       "It is like your gym assistant that saves all your exercises with all the wieghts you trained with, and helps you lift.",
-    addExercise: "+Add Exercise",
+    addExercise: "Add Exercise",
+    lastPlayed: "Last Played",
+  },
+  form: {
+    name: "Name",
+    description: "Description",
+    image: "Image",
+  },
+  exercise: {
+    addMuscle: "Add Muscle",
+    lastPlayed: "Last Played",
+  },
+  muscle: {
+    addAngle: "Add Angle",
+    lastPlayed: "Last Played",
+    lastTimeWeights: "Last Time Weights",
+    todayWeights: "Today's Weights",
+    weights: "Weights",
   },
 };
